@@ -1,0 +1,22 @@
+name: Build Images
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: login docker
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u wangsijie --password-stdin
+      - name: build base
+        run: |
+          docker build -t wangsijie/busybox .
+          docker push wangsijie/busybox
+      - name: build code-server
+        run: |
+          docker build -t wangsijie/code-server -f Dockerfile.code .
+          docker push wangsijie/code-server
