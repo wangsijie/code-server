@@ -27,9 +27,9 @@ RUN mkdir -p aws && \
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 # v2ray
 RUN mkdir -p /usr/local/v2ray
-ENV VERSION 4.23.1
+ENV VERSION 4.34.0
 WORKDIR /usr/local/v2ray
-RUN wget -q https://github.com/v2ray/v2ray-core/releases/download/v${VERSION}/v2ray-linux-64.zip \
+RUN wget -q https://github.com/v2fly/v2ray-core/releases/download/v${VERSION}/v2ray-linux-64.zip \
     && unzip v2ray-linux-64.zip \
     && chmod +x v2ray v2ctl \
     && rm *.zip
