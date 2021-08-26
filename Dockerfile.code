@@ -1,5 +1,7 @@
 FROM wangsijie/busybox
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+ENV VERSION=3.11.1
+RUN curl -fOL https://github.com/cdr/code-server/releases/download/v$VERSION/code-server_$VERSION_amd64.deb
+RUN dpkg -i code-server_$VERSION_amd64.deb
 RUN code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension dbaeumer.vscode-eslint
