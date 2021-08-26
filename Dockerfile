@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 # basic packages
 RUN apt-get update && apt-get install -y wget xz-utils unzip curl git
 # node
-ENV NODE_VERSION=v14.15.4
+ENV NODE_VERSION=v14.17.5
 WORKDIR /root
 RUN wget https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz
 RUN mkdir -p /usr/local/lib/nodejs
